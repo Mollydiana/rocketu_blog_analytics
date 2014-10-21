@@ -12,7 +12,7 @@ class LocationMiddleware(object):
         # make an API call to get our IP Address.
         if ip is None and settings.DEBUG:
             ip = requests.get('http://icanhazip.com/').text
-            print ip
+            request.ip = ip
         if ip is not None:
             response = requests.get('http://ipinfo.io/{}/json'.format(ip))
             if response.status_code == 200:

@@ -1,4 +1,6 @@
 from django.db import models
+from localflavor.us.models import USStateField
+# from django.contrib.localflavor.us.us_states import US_STATES
 
 
 class Page(models.Model):
@@ -9,9 +11,9 @@ class Page(models.Model):
 
 
 class Location(models.Model):
-    city = models.CharField(max_length=30)
-    country = models.CharField(max_length=30)
-    region = models.CharField(max_length=30)
+    city = models.CharField(max_length=30, null=True, blank=True)
+    country = models.CharField(max_length=30, null=True, blank=True)
+    region = models.CharField(max_length=30, null=True, blank=True)
 
     class Meta:
         unique_together = (("city", "country", "region"),)
@@ -34,5 +36,6 @@ class View(models.Model):
 
 class Ads(models.Model):
     img = models.ImageField(upload_to='adpics', null=True, blank=True)
-    url = models.URLField()
-    state = models.CharField(max_length=40)
+    url = models.URLField(null=True, blank=True)
+    state = USStateField(null=True, blank=True)
+

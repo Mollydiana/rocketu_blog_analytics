@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'localflavor',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -64,6 +65,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "blog.context_processors.tags_for_posts",
     "blog.context_processors.blog_authors",
     "analytics.context_processors.location",
+    "analytics.context_processors.filtered_ads",
+
 
 
 )
@@ -101,6 +104,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, "static", *MEDIA_URL.strip("/").split("/"))
 
 try:
     from local_settings import *

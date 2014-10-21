@@ -46,11 +46,12 @@
                 <div>by {{ latest_post.author }} on {{ latest_post.created }}</div>
                 <a href="{% url 'post' latest_post.pk %}">Read it!</a>
             </div>
+          <div class="pull-right"><a href="{{ filtered_ads.url }}"><img src="{{ filtered_ads.img.url }}" height="300" width="300"/></a></div>
+              <p>{{ filtered_ads. }}</p>
         </div>
             <hr>
             <div class="footer">
                 <p>&copy; My Blog 2014</p>
-                <div class="pull-right">Welcome user from {{ location.city }}!</div>
             </div>
         </div>
     </body>
