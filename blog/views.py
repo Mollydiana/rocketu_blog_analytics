@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from blog.models import Post
+from blog.models import Post, Author
 
 
 def blog(request):
@@ -13,4 +13,18 @@ def post(request, pk):
 
     return render(request, 'post.html', {
         'post': post_obj
+    })
+
+
+def blog_list(request, pk):
+
+    return render(request, 'blog.html', {
+        'posts': Post.objects.filter(tags=pk).order_by('-created')
+    })
+
+
+def author(request, pk):
+
+    return render(request, 'blog.html', {
+        'posts': Post.objects.filter(author=pk).order_by('-created')
     })

@@ -48,6 +48,24 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'analytics.middleware.LocationMiddleware',
+    'analytics.middleware.SaveViewMiddleware',
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    "django.core.context_processors.tz",
+    "django.contrib.messages.context_processors.messages",
+    "blog.context_processors.latest_post",
+    "blog.context_processors.tags_for_posts",
+    "blog.context_processors.blog_authors",
+    "analytics.context_processors.location",
+
+
 )
 
 ROOT_URLCONF = 'rocketu_blog_analytics.urls'
